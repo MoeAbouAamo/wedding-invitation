@@ -9,6 +9,26 @@ const startScreen = document.getElementById("startScreen");
 
 const envelope = document.getElementById("envelope");
 const sealBtn = document.querySelector(".sealBtn");
+const musicBtn = document.getElementById("musicBtn");
+
+// Restore previous choice
+const savedMuted = localStorage.getItem("musicMuted") === "1";
+if (bgMusic) bgMusic.muted = savedMuted;
+if (musicBtn) musicBtn.textContent = savedMuted ? "🔇 Music" : "🔊 Music";
+
+musicBtn?.addEventListener("click", () => {
+  if (!bgMusic) return;
+
+  bgMusic.muted = !bgMusic.muted;
+
+  // If unmuting and still paused, start it (some browsers require user click — this is a click ✅)
+  if (!bgMusic.muted && bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+  }
+
+  localStorage.setItem("musicMuted", bgMusic.muted ? "1" : "0");
+  musicBtn.textContent = bgMusic.muted ? "🔇 Music" : "🔊 Music";
+});
 
 /* =========================
    START SCREEN
