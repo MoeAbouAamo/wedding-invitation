@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omar & Nourhane | Wedding Invitation</title>
+
+  <!-- Google Fonts (English + Arabic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=2007" />
+</head>
+
+<body>
+  <!-- Background image revealed after opening -->
+  <div class="bg" aria-hidden="true"></div>
+  <div class="bgOverlay" aria-hidden="true"></div>
+
+  <!-- Floating top controls -->
+  <header class="topBar">
+    <button id="langBtn" class="chip" type="button" aria-label="Toggle language">EN / AR</button>
+  </header>
+
+  <!-- START SCREEN -->
+  <section class="startScreen" id="startScreen">
+    <div class="startInner">
+      <h1 class="startNames">
+        <span class="nameTop">Omar</span>
+        <span class="amp">&</span>
+        <span class="nameBottom">Nourhane</span>
+      </h1>
+      <p class="startSub">Welcome to our E-Invitation Wedding</p>
+      <button class="startBtn" id="startBtn">Start</button>
+    </div>
+  </section>
+
+  <!-- HERO / HOME -->
+  <main id="home" class="hero">
+    <section class="envelopeStage" aria-label="Wedding invitation envelope">
+
+      <!-- ✅ FIXED ENVELOPE -->
+      <div id="envelope" class="envelope envelope--classic" role="button" tabindex="0" aria-label="Open invitation">
+        <div class="envFace" aria-hidden="true"></div>
+
+        <!-- TOP FLAP -->
+        <div class="envTopFlap" aria-hidden="true"></div>
+
+        <!-- Tap text -->
+        <div class="tapText">
+          <span class="en">TAP TO OPEN</span>
+          <span class="ar" dir="rtl">اضغط للفتح</span>
+        </div>
+
+        <!-- Seal button -->
+        <button class="sealBtn" type="button" aria-label="Open">
+          <div class="wax-seal">
+            <div class="seal-inner">
+              <p>
+                <span class="sealLine">Happily</span>
+                <span class="sealLine">Ever</span>
+                <span class="sealLine after">after</span>
+              </p>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <!-- INVITATION CARD (revealed after opening) -->
+      <div class="card inviteCard" aria-label="Invitation card">
+        <div class="cardInner">
+          <div class="monogram" aria-hidden="true">O<span>&amp;</span>N</div>
+
+          <div class="namesBlock">
+            <div class="name">Omar</div>
+            <div class="amp">&amp;</div>
+            <div class="name">Nourhane</div>
+          </div>
+
+          <!-- SCRATCH DATE -->
+          <div class="scratchBlock" aria-label="Scratch to reveal the date" id="scratchBlock">
+            <div class="scratchTitle">
+              <div class="en">Reveal</div>
+              <div class="ar" dir="rtl">اكشف</div>
+            </div>
+
+            <div class="scratchSub">
+              <span class="en">Scratch each seal to discover the date</span>
+              <span class="ar" dir="rtl">اخدش كل ختم لاكتشاف التاريخ</span>
+            </div>
+
+            <div class="scratchRow">
+              <div class="scratchItem" data-value="25">
+                <div class="scratchValue"><span class="val">25</span></div>
+                <canvas class="scratchCanvas" data-threshold="0.45"></canvas>
+              </div>
+
+              <div class="scratchItem" data-value="October">
+                <div class="scratchValue"><span class="val">October</span></div>
+                <canvas class="scratchCanvas" data-threshold="0.45"></canvas>
+              </div>
+
+              <div class="scratchItem" data-value="2026">
+                <div class="scratchValue"><span class="val">2026</span></div>
+                <canvas class="scratchCanvas" data-threshold="0.45"></canvas>
+              </div>
+            </div>
+
+            <div class="scratchFinal hidden" id="scratchFinal">
+              <span class="en">Date: 25 October 2026</span>
+              <span class="ar" dir="rtl">التاريخ: ٢٥ أكتوبر ٢٠٢٦</span>
+            </div>
+          </div>
+
+          <div class="inviteText">
+            <p class="en">
+              ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾
+              — سورة الروم، الآية 21
+            </p>
+
+            <p class="ar" dir="rtl">
+              ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾
+              — سورة الروم، الآية 21
+            </p>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div class="scrollHint">
+            <span class="en">Slide down for details</span>
+            <span class="ar" dir="rtl">مرّر للأسفل للتفاصيل</span>
+            <div class="chev" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- DETAILS -->
+  <section id="details" class="section">
+    <div class="container">
+      <h2 class="sectionTitle">
+        <span class="en">Event Details</span>
+        <span class="ar" dir="rtl">تفاصيل المناسبة</span>
+      </h2>
+
+      <div class="cards">
+        <article class="infoCard">
+          <h3>
+            <span class="en">Ceremony</span>
+            <span class="ar" dir="rtl">مراسم الزفاف</span>
+          </h3>
+          <p>
+            <span class="en">Time: 6:30 PM</span><br/>
+            <span class="ar" dir="rtl">الوقت: ٦:٣٠ مساءً</span>
+          </p>
+          <p class="muted">
+            <span class="en">Kindly arrive 15 minutes early.</span>
+            <span class="ar" dir="rtl">يرجى الحضور قبل الموعد بربع ساعة.</span>
+          </p>
+        </article>
+
+        <article class="infoCard">
+          <h3>
+            <span class="en">Reception</span>
+            <span class="ar" dir="rtl">حفل الاستقبال</span>
+          </h3>
+          <p>
+            <span class="en">Time: 8:00 PM</span><br/>
+            <span class="ar" dir="rtl">الوقت: ٨:٠٠ مساءً</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location" class="section">
+    <div class="container">
+      <h2 class="sectionTitle">
+        <span class="en">Location</span>
+        <span class="ar" dir="rtl">الموقع</span>
+      </h2>
+
+      <div class="locationGrid">
+        <div class="infoCard">
+          <h3>
+            <span class="en">Le Rêve Wedding Venue</span>
+            <span class="ar" dir="rtl">قاعة لو ريف للأعراس</span>
+          </h3>
+
+          <p class="muted">
+            <span class="en">Rmeileh Seaside Road, Lebanon</span><br/>
+            <span class="ar" dir="rtl">طريق شاطئ الرميلة، لبنان</span>
+          </p>
+
+          <a class="btn"
+             href="https://www.google.com/maps/search/?api=1&query=Le%20R%C3%AAve%20Wedding%20Venue%2C%20Rmeileh%20Seaside%20Road"
+             target="_blank" rel="noreferrer">
+            <span class="en">Open in Maps</span>
+            <span class="ar" dir="rtl">فتح الخريطة</span>
+          </a>
+        </div>
+
+        <div class="mapWrap" aria-label="Map">
+          <iframe
+            title="Map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Le%20R%C3%AAve%20Wedding%20Venue%20Rmeileh%20Seaside%20Road&output=embed">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT REGISTRY -->
+  <section id="gift" class="section">
+    <div class="container">
+      <h2 class="sectionTitle">
+        <span class="en">Gift Registry</span>
+        <span class="ar" dir="rtl">قائمة الهدايا</span>
+      </h2>
+
+      <div class="infoCard" style="text-align:center;">
+        <p style="margin:0; line-height:1.8;">
+          <span class="en">
+            Your love, laughter and presence are all we could wish for on our special day.
+            For those who wish, a wedding list is available.
+          </span>
+          <span class="ar" dir="rtl">
+            محبتكم وضحكتكم وحضوركم هو كل ما نتمناه في يومنا المميز.
+            ولمن يرغب، تتوفر قائمة هدايا للزفاف.
+          </span>
+        </p>
+
+        <div style="height:14px;"></div>
+
+        <button
+          id="whishCopyBtn"
+          class="btn"
+          type="button"
+          data-copy="Whish Account number: 71 477 133">
+          <span class="en">Copy Whish Account</span>
+          <span class="ar" dir="rtl">نسخ حساب Whish</span>
+        </button>
+
+        <p id="whishMsg" class="formMsg" role="status" aria-live="polite" style="margin-top:10px;"></p>
+      </div>
+    </div>
+  </section>
+
+ <!-- RSVP -->
+<section id="rsvp" class="section">
+  <div class="container">
+    <h2 class="sectionTitle">
+      <span class="en">RSVP</span>
+      <span class="ar" dir="rtl">تأكيد الحضور</span>
+    </h2>
+
+    <form class="rsvpForm" id="rsvpForm">
+      <p class="muted" style="margin:0; line-height:1.8;">
+        <span class="en">Please confirm your attendance below.</span>
+        <span class="ar" dir="rtl">يرجى تأكيد حضوركم من خلال النموذج أدناه.</span>
+      </p>
+
+      <div class="row">
+        <label>
+          <span class="en">Full name</span>
+          <span class="ar" dir="rtl">الاسم الكامل</span>
+          <input id="rsvpName" type="text" placeholder="Your name" required />
+        </label>
+
+        <label>
+          <span class="en">Guests</span>
+          <span class="ar" dir="rtl">عدد المرافقين</span>
+          <select id="rsvpGuests" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="wide">
+        <span class="en">Will you be attending?</span>
+        <span class="ar" dir="rtl">هل ستحضر/ين؟</span>
+        <select id="rsvpStatus" required>
+          <option value="" selected disabled>Choose…</option>
+          <option value="Yes">Yes (Attending)</option>
+          <option value="No">No (Not attending)</option>
+          <option value="Maybe">Maybe</option>
+        </select>
+      </label>
+
+      <label class="wide">
+        <span class="en">Notes (optional)</span>
+        <span class="ar" dir="rtl">ملاحظات (اختياري)</span>
+        <input id="rsvpNote" type="text" placeholder="Dietary / late arrival / etc." />
+      </label>
+
+      <div class="row">
+        <button class="btn primary" type="submit" id="rsvpSendBtn">
+          <span class="en">Send RSVP</span>
+          <span class="ar" dir="rtl">إرسال التأكيد</span>
+        </button>
+      </div>
+
+      <p id="rsvpMsg" class="formMsg" role="status" aria-live="polite" style="margin:0;"></p>
+    </form>
+  </div>
+</section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footerLine"></div>
+      <p class="muted">
+        <span class="en">With love — Omar &amp; Nourhane</span>
+        <span class="ar" dir="rtl">مع الحب — عمر &amp; نورهان</span>
+      </p>
+    </div>
+  </footer>
+
+  <audio id="bgMusic" preload="none" loop>
+    <source src="assets/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
