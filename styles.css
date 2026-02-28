@@ -846,4 +846,13 @@
     color: #aaa !important;
     font-family: var(--font-body) !important;
     z-index: 12 !important;
+
+  }
+  /*Hide all sections */
+  body:not(.opened) #details,
+  body:not(.opened) #location,
+  body:not(.opened) #gift,
+  body:not(.opened) #rsvp,
+  body:not(.opened) footer {
+    display: none !important;
   }
