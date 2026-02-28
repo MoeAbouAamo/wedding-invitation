@@ -846,7 +846,6 @@
     color: #aaa !important;
     font-family: var(--font-body) !important;
     z-index: 12 !important;
-
   }
   /*Hide all sections */
   body:not(.opened) #details,
