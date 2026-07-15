@@ -42,9 +42,6 @@ startBtn?.addEventListener("click", () => {
 
 /* =========================
    OPEN INVITE (2 seconds total)
-   - flap opens slowly (2s)
-   - envelope fades near end
-   - bg + card appear as envelope disappears
    ========================= */
 function openInvite() {
   if (!envelope) return;
@@ -57,8 +54,6 @@ function openInvite() {
     bgMusic.play().catch(() => {});
   }
 
-  // Find the top flap in YOUR current HTML:
-  // <div class="flap backTop"></div>
   const topFlap = envelope.querySelector(".flap.backTop");
 
   // Force correct initial state so it never "appears from nowhere"
@@ -67,35 +62,27 @@ function openInvite() {
     topFlap.style.transformOrigin = "50% 0%";
     topFlap.style.backfaceVisibility = "hidden";
     topFlap.style.willChange = "transform";
-    // Ensure it starts closed
     topFlap.style.transform = "rotateX(0deg)";
-    // Apply the opening transition (2 seconds)
     topFlap.style.transition = "transform 2000ms cubic-bezier(.18,.85,.22,1)";
   }
 
-  // Fade envelope near the end of those 2 seconds
   envelope.style.willChange = "opacity, transform";
   envelope.style.transition = "opacity 450ms ease, transform 450ms ease";
 
-  // Kick the flap animation on next frame
   requestAnimationFrame(() => {
     if (topFlap) topFlap.style.transform = "rotateX(-160deg)";
   });
 
-  // Start showing bg/card while envelope is fading
-  // (so the picture appears as the envelope disappears)
   setTimeout(() => {
     document.body.classList.add("opened");
   }, 1450);
 
-  // Fade envelope out near the end
   setTimeout(() => {
     envelope.style.opacity = "0";
     envelope.style.transform = "translateY(-10px) scale(0.985)";
     envelope.style.pointerEvents = "none";
   }, 1550);
 
-  // End at exactly 2 seconds
   setTimeout(() => {
     document.body.classList.remove("opening");
     envelope.style.display = "none";
@@ -109,7 +96,6 @@ sealBtn?.addEventListener("click", (e) => {
   openInvite();
 });
 
-/* Optional accessibility: Enter/Space on envelope opens (remove if you don’t want it) */
 envelope?.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.key === " ") openInvite();
 });
@@ -150,7 +136,7 @@ whishCopyBtn?.addEventListener("click", async () => {
 });
 
 /* =========================
-   SCRATCH CIRCLES (unchanged)
+   SCRATCH CIRCLES
    ========================= */
 function initScratchCircles() {
   const canvases = document.querySelectorAll(".scratchCanvas");
@@ -161,13 +147,13 @@ function initScratchCircles() {
     if (!item) return;
 
     const threshold = parseFloat(canvas.dataset.threshold || "0.45");
-    const cssSize = 140;
+    
+    // Fixed: Pull sizing data dynamically from bounding dimensions instead of fixed 140px variables
+    const rectSize = canvas.getBoundingClientRect().width || 140; 
     const dpr = window.devicePixelRatio || 1;
 
-    canvas.style.width = cssSize + "px";
-    canvas.style.height = cssSize + "px";
-    canvas.width = Math.floor(cssSize * dpr);
-    canvas.height = Math.floor(cssSize * dpr);
+    canvas.width = Math.floor(rectSize * dpr);
+    canvas.height = Math.floor(rectSize * dpr);
 
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
@@ -177,12 +163,12 @@ function initScratchCircles() {
       ctx.scale(dpr, dpr);
 
       ctx.beginPath();
-      ctx.arc(cssSize / 2, cssSize / 2, cssSize / 2, 0, Math.PI * 2);
+      ctx.arc(rectSize / 2, rectSize / 2, rectSize / 2, 0, Math.PI * 2);
       ctx.clip();
 
       const g = ctx.createRadialGradient(
-        cssSize * 0.35, cssSize * 0.30, 10,
-        cssSize / 2, cssSize / 2, cssSize * 0.75
+        rectSize * 0.35, rectSize * 0.30, 10,
+        rectSize / 2, rectSize / 2, rectSize * 0.75
       );
       g.addColorStop(0.0, "rgba(255,244,214,1)");
       g.addColorStop(0.35, "rgba(214,180,107,1)");
@@ -190,7 +176,7 @@ function initScratchCircles() {
       g.addColorStop(1.0, "rgba(184,146,61,1)");
 
       ctx.fillStyle = g;
-      ctx.fillRect(0, 0, cssSize, cssSize);
+      ctx.fillRect(0, 0, rectSize, rectSize);
       ctx.restore();
     }
 
@@ -272,6 +258,9 @@ function initScratchCircles() {
       isDown = false;
       tryReveal();
     });
+    
+    // Fixed: Force background covers to rebuild dynamically if browser configurations shift
+    window.addEventListener("resize", drawCover);
   });
 }
 
@@ -284,11 +273,9 @@ if (document.readyState === "loading") {
 /* =========================
    GOOGLE SHEET RSVP
    ========================= */
-
 const rsvpForm = document.getElementById("rsvpForm");
 const rsvpMsg = document.getElementById("rsvpMsg");
 
-/* 🔴 PASTE YOUR GOOGLE SCRIPT URL HERE */
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjc6smbl6FjY6HXcXa0B6bfNn0_PUW1Dnek8h0Kuv9DmgWt90GPLP89mvC6P71DWwZ/exec";
 
 rsvpForm?.addEventListener("submit", async (e) => {
@@ -300,7 +287,7 @@ rsvpForm?.addEventListener("submit", async (e) => {
   const note = document.getElementById("rsvpNote").value.trim();
 
   if (!name || !status) {
-    rsvpMsg.textContent = "Please complete required fields.";
+    rsvpMsg.textContent = document.body.classList.contains("lang-ar") ? "يرجى ملء الحقول المطلوبة." : "Please complete required fields.";
     return;
   }
 
@@ -319,11 +306,11 @@ rsvpForm?.addEventListener("submit", async (e) => {
       })
     });
 
-    rsvpMsg.textContent = "RSVP submitted successfully ✓";
+    rsvpMsg.textContent = document.body.classList.contains("lang-ar") ? "تم إرسال تأكيد الحضور بنجاح ✓" : "RSVP submitted successfully ✓";
     rsvpForm.reset();
 
   } catch (err) {
-    rsvpMsg.textContent = "Something went wrong.";
+    rsvpMsg.textContent = document.body.classList.contains("lang-ar") ? "عذراً، حدث خطأ ما." : "Something went wrong.";
     console.error(err);
   }
 });
