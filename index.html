@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Omar & Nourhane | Wedding Invitation</title>
 
-  <!-- Google Fonts (English + Arabic) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;600&display=swap" rel="stylesheet">
@@ -14,17 +13,13 @@
 </head>
 
 <body>
-  <!-- Background image revealed after opening -->
   <div class="bg" aria-hidden="true"></div>
   <div class="bgOverlay" aria-hidden="true"></div>
 
-  <!-- Floating top controls -->
   <header class="topBar">
-    <button id="langBtn" class="chip" type="button" aria-label="Toggle language">EN / AR</button>
     <button id="musicBtn" class="chip" type="button" aria-label="Toggle music"> 🔇Music</button>
   </header>
 
-  <!-- START SCREEN -->
   <section class="startScreen" id="startScreen">
     <div class="startInner">
       <h1 class="startNames">
@@ -37,24 +32,19 @@
     </div>
   </section>
 
-  <!-- HERO / HOME -->
   <main id="home" class="hero">
     <section class="envelopeStage" aria-label="Wedding invitation envelope">
 
-      <!-- ✅ FIXED ENVELOPE -->
       <div id="envelope" class="envelope envelope--classic" role="button" tabindex="0" aria-label="Open invitation">
         <div class="envFace" aria-hidden="true"></div>
 
-        <!-- TOP FLAP -->
         <div class="envTopFlap" aria-hidden="true"></div>
 
-        <!-- Tap text -->
         <div class="tapText">
           <span class="en">TAP TO OPEN</span>
           <span class="ar" dir="rtl">اضغط للفتح</span>
         </div>
 
-        <!-- Seal button -->
         <button class="sealBtn" type="button" aria-label="Open">
           <div class="wax-seal">
             <div class="seal-inner">
@@ -68,18 +58,30 @@
         </button>
       </div>
 
-      <!-- INVITATION CARD (revealed after opening) -->
       <div class="card inviteCard" aria-label="Invitation card">
         <div class="cardInner">
-          <div class="monogram" aria-hidden="true">O<span>&amp;</span>N</div>
+          <div class="monogram" aria-hidden="true">O<span>&</span>N</div>
+
+          <div class="inviteText">
+            <p class="en">
+              بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ <br>
+              <br>
+              وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+            </p>
+
+            <p class="ar" dir="rtl" >
+              بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ <br>
+              <br>
+              وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+            </p>
+          </div>
 
           <div class="namesBlock">
             <div class="name">Omar</div>
-            <div class="amp">&amp;</div>
+            <div class="amp">&</div>
             <div class="name">Nourhane</div>
           </div>
 
-          <!-- SCRATCH DATE -->
           <div class="scratchBlock" aria-label="Scratch to reveal the date" id="scratchBlock">
             <div class="scratchTitle">
               <div class="en">Reveal</div>
@@ -114,18 +116,6 @@
             </div>
           </div>
 
-          <div class="inviteText">
-            <p class="en">
-              ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾
-              — سورة الروم، 21
-            </p>
-
-            <p class="ar" dir="rtl">
-              ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾
-              — سورة الروم، 21
-            </p>
-          </div>
-
           <div class="divider" aria-hidden="true"></div>
 
           <div class="scrollHint">
@@ -139,7 +129,6 @@
     </section>
   </main>
 
-  <!-- DETAILS -->
   <section id="details" class="section">
     <div class="container">
       <h2 class="sectionTitle">
@@ -148,20 +137,6 @@
       </h2>
 
       <div class="cards">
-        <article class="infoCard">
-          <h3>
-            <span class="en">Ceremony</span>
-            <span class="ar" dir="rtl">مراسم الزفاف</span>
-          </h3>
-          <p>
-            <span class="en">Time: 6:30 PM</span><br/>
-            <span class="ar" dir="rtl">الوقت: ٦:٣٠ مساءً</span>
-          </p>
-          <p class="muted">
-            <span class="en">Kindly arrive 15 minutes early.</span>
-            <span class="ar" dir="rtl">يرجى الحضور قبل الموعد بربع ساعة.</span>
-          </p>
-        </article>
 
         <article class="infoCard">
           <h3>
@@ -169,7 +144,7 @@
             <span class="ar" dir="rtl">حفل الاستقبال</span>
           </h3>
           <p>
-            <span class="en">Time: 8:00 PM</span><br/>
+            <span class="en">Time: 8:00 PM</span>
             <span class="ar" dir="rtl">الوقت: ٨:٠٠ مساءً</span>
           </p>
         </article>
@@ -177,7 +152,6 @@
     </div>
   </section>
 
-  <!-- LOCATION -->
   <section id="location" class="section">
     <div class="container">
       <h2 class="sectionTitle">
@@ -217,19 +191,18 @@
     </div>
   </section>
 
-  <!-- GIFT REGISTRY -->
   <section id="gift" class="section">
     <div class="container">
       <h2 class="sectionTitle">
         <span class="en">Gift Registry</span>
-        <span class="ar" dir="rtl">قائمة الهدايا</span>
+        <span class="ar" dir="rtl">لائحة الهدايا </span>
       </h2>
 
       <div class="infoCard" style="text-align:center;">
         <p style="margin:0; line-height:1.8;">
-          <span class="en">
-            Your love, laughter and presence are all we could wish for on our special day.
-            For those who wish, a wedding list is available.
+          <span class="en" dir="rtl">
+             محبتكم وضحكتكم وحضوركم هو كل ما نتمناه في يومنا المميز. <br>
+            ولمن يرغب، تتوفر قائمة هدايا للزفاف.
           </span>
           <span class="ar" dir="rtl">
             محبتكم وضحكتكم وحضوركم هو كل ما نتمناه في يومنا المميز.
@@ -253,8 +226,7 @@
     </div>
   </section>
 
- <!-- RSVP -->
-<section id="rsvp" class="section">
+ <section id="rsvp" class="section">
   <div class="container">
     <h2 class="sectionTitle">
       <span class="en">RSVP</span>
@@ -320,8 +292,7 @@
     <div class="container">
       <div class="footerLine"></div>
       <p class="muted">
-        <span class="en">With love — Omar &amp; Nourhane</span>
-        <span class="ar" dir="rtl">مع الحب — عمر &amp; نورهان</span>
+        <span class="en">With love — Omar & Nourhane</span>
       </p>
     </div>
   </footer>
@@ -332,5 +303,4 @@
 
   <script src="script.js"></script>
 </body>
-</html>
-
+</html> 
