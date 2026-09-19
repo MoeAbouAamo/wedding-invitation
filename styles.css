@@ -10,6 +10,7 @@
   --font-head: "Playfair Display", serif;
   --font-body: "Inter", sans-serif;
   --font-ar: "Noto Naskh Arabic", serif;
+  --font-invite: "Aref Ruqaa", "Noto Naskh Arabic", serif;
 }
 
 * { box-sizing: border-box; }
@@ -368,10 +369,10 @@ body.opened .inviteCard {
    PERFECTED SPACING FOR INVITATION TEXT
    ========================================================= */
 .inviteText p {
-  font-family: var(--font-ar), serif;
-  font-weight: 500;
-  font-size: 23px;
-  color: #1F1F1F;
+  font-family: var(--font-invite) !important;
+  font-weight: 700 !important;
+  font-size: 25px !important;
+  color: #8a6a2f !important;
   text-align: center;
   margin: 0;
   
@@ -389,8 +390,10 @@ body.opened .inviteCard {
 /* Unified formatting overrides for both language selections */
 .inviteText .en,
 .inviteText .ar {
-  font-family: var(--font-ar), serif !important;
-  font-size: 23px !important;
+  font-family: var(--font-invite) !important;
+  font-weight: 700 !important;
+  font-size: 25px !important;
+  color: #8a6a2f !important;
   text-align: center !important;
 }
 
