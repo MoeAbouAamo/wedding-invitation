@@ -31,6 +31,24 @@ musicBtn?.addEventListener("click", () => {
 });
 
 /* =========================
+   STOP MUSIC WHEN LEAVING THE PAGE
+   Covers: closing the tab, navigating away, switching apps
+   on mobile, or the tab being backgrounded.
+   ========================= */
+function stopMusic() {
+  if (!bgMusic) return;
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) stopMusic();
+});
+
+window.addEventListener("pagehide", stopMusic);
+window.addEventListener("beforeunload", stopMusic);
+
+/* =========================
    START SCREEN
    ========================= */
 startBtn?.addEventListener("click", () => {
@@ -42,6 +60,10 @@ startBtn?.addEventListener("click", () => {
 
 /* =========================
    OPEN INVITE (2 seconds total)
+   The flap animation itself is handled entirely by CSS
+   (body.opening .flap.backTop { animation: flapOpen3s ... })
+   so we only need to toggle classes here and keep the
+   surrounding timeouts in sync with that 2000ms duration.
    ========================= */
 function openInvite() {
   if (!envelope) return;
@@ -53,25 +75,6 @@ function openInvite() {
   if (bgMusic && bgMusic.paused) {
     bgMusic.play().catch(() => {});
   }
-
-  const topFlap = envelope.querySelector(".flap.backTop");
-
-  // Force correct initial state so it never "appears from nowhere"
-  if (topFlap) {
-    topFlap.style.opacity = "1";
-    topFlap.style.transformOrigin = "50% 0%";
-    topFlap.style.backfaceVisibility = "hidden";
-    topFlap.style.willChange = "transform";
-    topFlap.style.transform = "rotateX(0deg)";
-    topFlap.style.transition = "transform 2000ms cubic-bezier(.18,.85,.22,1)";
-  }
-
-  envelope.style.willChange = "opacity, transform";
-  envelope.style.transition = "opacity 450ms ease, transform 450ms ease";
-
-  requestAnimationFrame(() => {
-    if (topFlap) topFlap.style.transform = "rotateX(-160deg)";
-  });
 
   setTimeout(() => {
     document.body.classList.add("opened");
@@ -147,9 +150,9 @@ function initScratchCircles() {
     if (!item) return;
 
     const threshold = parseFloat(canvas.dataset.threshold || "0.45");
-    
-    // Fixed: Pull sizing data dynamically from bounding dimensions instead of fixed 140px variables
-    const rectSize = canvas.getBoundingClientRect().width || 140; 
+
+    // Pull sizing data dynamically from bounding dimensions instead of fixed 140px variables
+    const rectSize = canvas.getBoundingClientRect().width || 140;
     const dpr = window.devicePixelRatio || 1;
 
     canvas.width = Math.floor(rectSize * dpr);
@@ -258,8 +261,8 @@ function initScratchCircles() {
       isDown = false;
       tryReveal();
     });
-    
-    // Fixed: Force background covers to rebuild dynamically if browser configurations shift
+
+    // Force background covers to rebuild dynamically if browser configurations shift
     window.addEventListener("resize", drawCover);
   });
 }
