@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@400;500&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;700&family=Playfair+Display:wght@400;500&display=swap');
 :root {
   --cream: #F7F1E6;
   --champagne: #D6B46B;
@@ -370,15 +369,15 @@ body.opened .inviteCard {
    PERFECTED SPACING FOR INVITATION TEXT
    ========================================================= */
 .inviteText p {
-  font-family: var(--font-invite) !important;
-  font-weight: 700 !important;
-  font-size: 25px !important;
-  color: #8a6a2f !important;
+  font-family: var(--font-invite);
+  font-weight: 700;
+  font-size: 25px;
+  color: #8a6a2f;
   text-align: center;
   margin: 0;
-  
+
   /* This controls the tight, clean spacing between lines 2 and 3 */
-  line-height: 1.6 !important; 
+  line-height: 1.7 !important;
 }
 
 /* This targets the first line break to keep the big gap before line 2 */
@@ -612,15 +611,18 @@ body.lang-ar p.ar { display: block; }
 }
 .scratchTitle {
   font-family: var(--font-head);
-  letter-spacing: .10em;
+  font-weight: 700;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  font-size: 18px;
-  color: rgba(31,31,31,0.80);
+  font-size: 20px;
+  color: var(--champagne);
 }
 .scratchTitle .ar {
   font-family: var(--font-ar);
+  font-weight: 600;
   text-transform: none;
   letter-spacing: 0;
+  color: rgba(31,31,31,0.80);
 }
 .scratchSub {
   font-size: 13px;
@@ -659,12 +661,13 @@ body.lang-ar p.ar { display: block; }
 }
 .scratchValue .val {
   font-family: var(--font-head);
-  letter-spacing: .05em;
+  font-weight: 700;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(31,31,31,0.85);
+  color: var(--champagne);
   opacity: 0;
   transform: translateY(2px);
-  font-size: max(11px, 2.5vw);
+  font-size: max(12px, 2.6vw);
   transition: opacity 350ms ease, transform 350ms ease;
 }
 .scratchItem.done .scratchValue .val {
@@ -685,9 +688,18 @@ body.lang-ar p.ar { display: block; }
 }
 .scratchFinal {
   margin-top: 6px;
-  font-size: 13px;
-  color: rgba(31,31,31,0.70);
+  font-size: 15px;
+  color: rgba(31,31,31,0.85);
   text-align: center;
+}
+.scratchFinal .en {
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.scratchFinal .ar {
+  font-family: var(--font-ar);
+  font-weight: 600;
 }
 @media (max-width: 520px) {
   .scratchRow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
